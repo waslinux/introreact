@@ -1,26 +1,45 @@
-import React from 'react';
+// lifecycle
+ 
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
 
-function sum(a, b){
-  return a + b
+class App extends Component{
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      clock: 1000,
+      copo: 'água'
+    }
+  }
+
+  componentDidMount() {
+    window.setTimeout(() => {
+      this.setState({
+        copo: 'suco'
+      })
+    }, 3000)
+  }
+  
+  alterarCopo = () => {
+    this.setState({
+     copo: 'refrigerante'
+    })
+  }
+  
+  render() {
+    const {clock, copo} = this.state
+    return (
+      <di>
+        <h1>{clock}</h1>
+        <button onClick={() => this.alterarCopo()}><h1>{copo}</h1></button>
+      </di>
+    )
+  }
 }
 
-function primeiroJSX() {
-  return(
-    <div class="teste">
-      Wander Augusto  - Introdução ao ReactJS
-      <h2>Soma: {sum(10, 20)}</h2>
-    </div>
-  )
-}
 
-const App = () => {
-  return(
-    <div className="App">
-     {primeiroJSX()}
-    </div>
-  )
-}
+
 const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement) 
