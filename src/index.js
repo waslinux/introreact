@@ -1,39 +1,21 @@
 // lifecycle
- 
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
 
-class App extends Component{
-  constructor(props) {
-    super(props)
+import RenderizacaoCondicional from './RenderizacaoCondicional'
+import Listas from './Listas'
+import Eventos from './Eventos'
 
-    this.state = {
-      clock: 1000,
-      copo: 'água'
-    }
-  }
+class App extends Component {
 
-  componentDidMount() {
-    window.setTimeout(() => {
-      this.setState({
-        copo: 'suco'
-      })
-    }, 3000)
-  }
-  
-  alterarCopo = () => {
-    this.setState({
-     copo: 'refrigerante'
-    })
-  }
-  
   render() {
-    const {clock, copo} = this.state
     return (
       <di>
-        <h1>{clock}</h1>
-        <button onClick={() => this.alterarCopo()}><h1>{copo}</h1></button>
+        <RenderizacaoCondicional />
+        <Listas />
+        <Eventos />
       </di>
     )
   }
